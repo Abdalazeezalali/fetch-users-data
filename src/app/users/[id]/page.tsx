@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import { RedoIcon} from 'lucide-react';
 import Link from 'next/link';
+import { baseUrl } from '@/constants/variables';
+import { User } from '@/constants/types';
 const bull = (
     // Material UI
         <Box
@@ -17,15 +18,15 @@ const bull = (
         •
         </Box>
     );
-    const getData=async (id)=>{
+    const getData=async (id:string)=>{
       // fetch id user
-      const response=await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      const response=await fetch(`${baseUrl}/${id}`)
       if(!response.ok){
         throw new Error("failed")
       }
       return response.json()
     }
-const page = async ({params}) => {
+const page = async ({params}:User) => {
   const {id}=params
   const dataUser=await getData(id)
     return (

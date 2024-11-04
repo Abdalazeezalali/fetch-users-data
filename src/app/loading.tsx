@@ -1,4 +1,5 @@
-const Loading = () => {
+
+const loading = () => {
   return (
     <div className="translate-x-[50%] mt-52">
       <div role="status  ">
@@ -12,4 +13,4 @@ const Loading = () => {
   )
 }
 
-export default Loading
+export default loading
