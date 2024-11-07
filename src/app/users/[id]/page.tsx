@@ -7,8 +7,9 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import { RedoIcon} from 'lucide-react';
 import Link from 'next/link';
-import { baseUrl } from '@/constants/variables';
-import { User } from '@/constants/types';
+// import { baseUrl } from '@/constants/variables';
+// import { User } from '@/constants/types';
+import { userEndPoints } from '@/api/Functions';
 const bull = (
     // Material UI
         <Box
@@ -20,13 +21,16 @@ const bull = (
     );
     const getData=async (id:string)=>{
       // fetch id user
-      const response=await fetch(`${baseUrl}/${id}`)
+      const response=await fetch(userEndPoints.user(id))
       if(!response.ok){
         throw new Error("failed")
       }
       return response.json()
     }
-const page = async ({params}:User) => {
+    type Props={
+      params:{id:string},
+    }
+const page = async ({params}:Props) => {
   const {id}=params
   const dataUser=await getData(id)
     return (
@@ -52,11 +56,11 @@ const page = async ({params}:User) => {
       </div>
     <Stack direction="row" spacing={2} className='ml-[80%] max-sm:mt-[30%] max-sm:ml-[70%] mt-[5%] '>
       {/* button for go to home page */}
-      <Button variant="contained" endIcon={<RedoIcon/>}>
         <Link href={"/"}>
+      <Button variant="contained" endIcon={<RedoIcon/>} >
         Home
-        </Link>
       </Button>
+        </Link>
     </Stack>
     </>
     )
