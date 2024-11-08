@@ -3,6 +3,10 @@ import { ThemeProvider } from "@/components-shadcn/theme-provider"
 import Navbar from "@/components/Navbar";
 import { geistMono, geistSans } from "@/constants/fonts-import";
 import type { Metadata } from "next";
+import {
+  ClerkProvider,
+
+} from '@clerk/nextjs'
 export const metadata: Metadata = {
   title: "Title",
   description: "Description",
@@ -14,6 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -29,5 +34,7 @@ export default function RootLayout({
           </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
+
   );
 }

@@ -4,13 +4,13 @@ import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { Button } from "@/components-shadcn/ui/button"
+import { Button } from "../components-shadcn/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components-shadcn/ui/dropdown-menu"
+} from "../components-shadcn/ui/dropdown-menu"
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
@@ -25,7 +25,7 @@ export function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="p-2 cursor-pointer">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
