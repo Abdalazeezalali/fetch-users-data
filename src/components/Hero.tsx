@@ -37,8 +37,8 @@ export default async function Hero({}) {
         {users?.map((user: User) => (
           <Grid item xs={12} md={6} lg={4} xl={3} key={user.id}>
             <div className="grid-elements">
-             <Link href={`users/${user.id}`}>
-             <div className=" hover:bg-slate-300 dark:hover:bg-slate-600 hover:opacity-30 rounded-md p-5 cursor-pointer ">
+              <Link href={`users/${user.id}`}>
+              <div className=" hover:bg-slate-300 dark:hover:bg-slate-600 hover:opacity-30 rounded-md p-5 cursor-pointer ">
                 <p
                   
                   className="font-semibold text-2xl"
@@ -47,7 +47,7 @@ export default async function Hero({}) {
                 </p>
                 <p className="truncate w-24">{user.email}</p>
               </div>
-             </Link>
+              </Link>
             </div>
           </Grid>
         ))}
