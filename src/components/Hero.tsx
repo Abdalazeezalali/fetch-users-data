@@ -4,7 +4,8 @@ import Link from "next/link";
 import React from "react";
 import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
-import { userEndPoints } from "@/api/Functions";
+import { userEndPoints } from "@/constants/variables";
+import NewItem from "./NewItem";
 
 const getData = async () => {
 
@@ -18,19 +19,11 @@ const getData = async () => {
 
 
 };
-export default async function Hero({}) {
-  const users = await getData();
 
+export default async  function Hero({}) {
+  const users = await getData();
   return (
-    // use id , name and email from users
-    //     <main className='w-[300px] h-[400px] mx-auto mt-20 flex flex-col gap-y-5 overflow-y-scroll'>
-    //     {users?.map((user:User)=>(
-    //         <div key={user.id}  className="flex gap-y-2 flex-col  hover:bg-slate-300 dark:hover:bg-slate-600 hover:opacity-30 rounded-md p-5 cursor-pointer ">
-    //       <Link href={`users/${user.id}`} className="font-semibold text-2xl">{user.name}</Link>
-    //       <p className="truncate w-24">{user.email}</p>
-    // </div>
-    //     ))}
-    // </main>
+    <>
     <Box sx={{ flexGrow: 1 }}>
       {/* Setting up the Fluid Grid system */}
       <Grid container spacing={2}>
@@ -53,5 +46,7 @@ export default async function Hero({}) {
         ))}
       </Grid>
     </Box>
-  );
+    <NewItem/>
+    </>
+  )
 }

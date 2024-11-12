@@ -8,9 +8,13 @@ export type User={
         city?:string,
         zipcode?:string
     },
-    phone?:number,
+    phone?:string,
     company?:{
         name:string
     },
     params?:string
 }
+export type item = {
+    id?: number;
+    content?: string;
+};

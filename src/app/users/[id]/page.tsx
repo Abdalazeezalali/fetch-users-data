@@ -7,9 +7,8 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import { RedoIcon} from 'lucide-react';
 import Link from 'next/link';
-// import { baseUrl } from '@/constants/variables';
-// import { User } from '@/constants/types';
-import { userEndPoints } from '@/api/Functions';
+import { userEndPoints } from '@/constants/variables';
+
 const bull = (
     // Material UI
         <Box
