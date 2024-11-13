@@ -5,6 +5,8 @@ import { useUser } from "@clerk/nextjs";
 import React, { useState } from "react";
 
 const Page = () => {
+  const random=Math.floor((Math.random()*10000000) )
+  console.log(random)
   const [FirstName, setFirstName] = useState("");
   const [SecondName, setSecondName] = useState("");
   const [Company, setCompany] = useState("");
@@ -12,12 +14,12 @@ const Page = () => {
   const [Location, setLocation] = useState("");
   const [Email, setEmail] = useState("");
   const createUser = async () => {
-    localStorage.setItem("FirstName", FirstName);
-    localStorage.setItem("SecondName", SecondName);
-    localStorage.setItem("Company", Company);
-    localStorage.setItem("Phone", Phone);
-    localStorage.setItem("Location", Location);
-    localStorage.setItem("Email", Email);
+    // localStorage.setItem("FirstName", FirstName);
+    // localStorage.setItem("SecondName", SecondName);
+    // localStorage.setItem("Company", Company);
+    // localStorage.setItem("Phone", Phone);
+    // localStorage.setItem("Location", Location);
+    // localStorage.setItem("Email", Email);
     const usersLocalStorage = localStorage.getItem("users");
     if (usersLocalStorage) {
       const users: User[] = JSON.parse(usersLocalStorage);
@@ -27,6 +29,7 @@ const Page = () => {
         address: { street: Location },
         phone: Phone,
         company: { name: Company },
+        id:String(random)
       });
       localStorage.setItem("users", JSON.stringify(users));
     } else {
@@ -37,6 +40,7 @@ const Page = () => {
         address: { street: Location },
         phone: Phone,
         company: { name: Company },
+        id:String(random)
       });
       localStorage.setItem("users", JSON.stringify(users));
     }
