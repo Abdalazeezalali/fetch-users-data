@@ -45,6 +45,9 @@ const NewItem = () => {
                         }
                     }}
                     className="text-white py-2 px-4 rounded-lg bg-red-500 hover:opacity-70 transition-all" >X</button>
+                    <Link
+                    href={`/updateUser/${newUser.id}`}
+                    className=" mx-5 text-white py-2 px-4 rounded-lg bg-green-500 hover:opacity-70 transition-all" >E</Link>
                     </div>
                 </Grid>
                 );
