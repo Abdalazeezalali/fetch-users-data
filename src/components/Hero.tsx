@@ -1,4 +1,4 @@
-
+"use client"
 import { User } from "@/constants/types";
 import Link from "next/link";
 import React from "react";
@@ -6,25 +6,35 @@ import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import { userEndPoints } from "@/constants/variables";
 import NewItem from "./NewItem";
+import {useEffect,useState} from 'react'
+import { useUser } from "@clerk/nextjs";
 
-const getData = async () => {
+// const getData = async () => {
 
     // fetch users data
-  const response = await fetch(userEndPoints.users);
-  if (!response.ok) {
-    throw new Error("failed");
-  }
+//   const response = await fetch(userEndPoints.users);
+//   if (!response.ok) {
+//     throw new Error("failed");
+//   }
   
-  return  response.json();
+//   return  response.json();
 
 
-};
+// };
+export default   function Hero({}) {
+  const [data,setData] = useState([])
+  
+  useEffect(()=>{
+    fetch(userEndPoints.users).then(res => res.json())
+    .then(data => {
+      setData(data);
+    }).catch(e=>console.log(e.message));
+  },[])
+  const users =  data;
+  const { isSignedIn } = useUser();
 
-export default async  function Hero({}) {
-  const users = await getData();
-  return (
-    <>
-    <Box sx={{ flexGrow: 1 }}>
+  return isSignedIn && (
+    <><Box sx={{ flexGrow: 1 }}>
       {/* Setting up the Fluid Grid system */}
       <Grid container spacing={2}>
         {users?.map((user: User) => (
